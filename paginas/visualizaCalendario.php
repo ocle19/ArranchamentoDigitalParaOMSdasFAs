@@ -6,31 +6,9 @@ if (isset($_GET['idmilitar']) and $nivel > 0) {
 ?>
     <div class="container">
         <div class="table">
-            <tbody>
-                <?php
-                $ano = ($ano) ? $ano : date("Y");
-                $diaDoAno = date('z');
-                if ($diaDoAno < 7) {
-                    $semana = ($semana) ? $semana : 1;
-                } else {
-                    $semana = ($semana) ? $semana : date('W', strtotime(date('Ymd') . ' + ' . DIAS_ANTECEDENCIA . ' days'));
-                }
-
-                if ($semana > 52) {
-                    $ano++;
-                    $semana = 1;
-                } elseif ($semana < 1) {
-                    $ano--;
-                    $semana = 52;
-                }
-                ?>
-                <center>
-                <a href="?pagina=visualizaCalendario&semana=<?php echo ($semana == 1 ? 52 : $semana - 1) . '&ano=' . ($semana == 1 ? $ano - 1 : $ano); ?>&idmilitar=<?php echo $id_militar; ?>&militar=<?php echo $nome_militar; ?>&laranjeira=<?php echo $laranjeira; ?>" class="btn btn-default">
-                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Semana anterior
-                </a>
-                <a href="?pagina=visualizaCalendario&semana=<?php echo ($semana == 52 ? 1 : 1 + $semana) . '&ano=' . ($semana == 52 ? 1 + $ano : $ano); ?>&idmilitar=<?php echo $id_militar; ?>&militar=<?php echo $nome_militar; ?>&laranjeira=<?php echo $laranjeira; ?>" class="btn btn-default">
-                    Próxima semana<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                </a>
+            <tbody>  
+                <CENTER>Selecione uma semana
+                <input type="week" id="week" onchange="updateWeek(this, window.location.href)" value="<?php echo date('Y-m-d'); ?>">
                 <br>
                 <?php
                 if ($nome_militar) {

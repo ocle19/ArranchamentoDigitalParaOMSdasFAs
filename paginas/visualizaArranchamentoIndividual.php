@@ -5,33 +5,11 @@ if ($_SESSION['nivel'] == 1) {
     $id_militar   = (int) filter_var($_SESSION['idUsuario'], FILTER_SANITIZE_NUMBER_INT);
 ?>
     <div class="container">
+      
         <div class="table">
             <tbody>
-                <?php
-                $ano = ($ano) ? $ano : date("Y");
-                $diaDoAno = date('z');
-                if ($diaDoAno < 7) {
-                    $semana = ($semana) ? $semana : 1;
-                } else {
-                    $semana = ($semana) ? $semana : date('W', strtotime(date('Ymd') . ' + ' . DIAS_ANTECEDENCIA . ' days'));
-                }
-
-                if ($semana > 52) {
-                    $ano++;
-                    $semana = 1;
-                } elseif ($semana < 1) {
-                    $ano--;
-                    $semana = 52;
-                }
-                ?>
-                <CENTER>
-                <a href="<?php echo $_SERVER['PHP_SELF'] . '?semana=' . ($semana == 1 ? 52 : $semana - 1) . '&ano=' . ($semana == 1 ? $ano - 1 : $ano); ?>" class="btn btn-default">
-                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Semana anterior
-                </a>
-
-                <a href="<?php echo $_SERVER['PHP_SELF'] . '?semana=' . ($semana == 52 ? 1 : 1 + $semana) . '&ano=' . ($semana == 52 ? 1 + $ano : $ano); ?>" class="btn btn-default">
-                    Próxima semana<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                </a>
+                <CENTER>Selecione uma semana
+                <input type="week" id="week" onchange="updateWeek(this)" value="<?php echo date('Y-m-d'); ?>">
                 <br>
                 <?php
                 if (isset($_SESSION['idUsuario'])) {

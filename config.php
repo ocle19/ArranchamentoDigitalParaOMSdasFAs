@@ -4,7 +4,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 define('OS_HOST', 'LINUX'); /// WIN // LINUX
 $path = __DIR__ . '/';
-define('VERSAO', MD5(1.8));
+define('VERSAO', MD5(1.81));
 /* alterar conforme a necessidade de gerar relatórios, testei com um relatório de 6 meses
 
 Consulta no mysql: (37545 total, A consulta demorou 4,5228 segundos.)

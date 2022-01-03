@@ -1,3 +1,13 @@
+let updateWeek = (value, href) => {
+    let ano = value.value.split('-')[0];
+    let semana = value.value.split('-W')[1];
+    if (href !== undefined) {
+    window.location.href = href+'&ano=' + ano + '&semana=' + semana;
+    } else {
+        window.location.href = 'index.php?ano=' + ano + '&semana=' + semana;
+    }
+}
+
 function SomenteNumero(e) {
     var tecla = (window.event) ? event.keyCode : e.which;
     if ((tecla > 47 && tecla < 58)) return true;

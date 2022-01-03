@@ -4,36 +4,15 @@ if ($_SESSION['nivel'] == 3) {
     <div class="container-fluid">
         <div class="table table-responsive">
             <tbody>
-                <center>
-                    <?php
-                    $year = ($ano) ? $ano : date("Y");
-                    $diaDoAno = date('z');
-                    if ($diaDoAno < 7) {
-                        $week = ($semana) ? $semana : 1;
-                    } else {
-                        $week = ($semana) ? $semana : date('W', strtotime(date('Ymd') . ' + 0 days'));
-                    }
-
-                    if ($week > 52) {
-                        $year++;
-                        $week = 1;
-                    } elseif ($week < 1) {
-                        $year--;
-                        $week = 52;
-                    }
-                    ?>
-                    <a href="<?php echo $_SERVER['PHP_SELF'] . '?semana=' . ($week == 1 ? 52 : $week - 1) . '&ano=' . ($week == 1 ? $year - 1 : $year); ?>" class="btn btn-default">
-                        <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Semana anterior
-                    </a>
-
-                    <a href="<?php echo $_SERVER['PHP_SELF'] . '?semana=' . ($week == 52 ? 1 : 1 + $week) . '&ano=' . ($week == 52 ? 1 + $year : $year); ?>" class="btn btn-default">
-                        Próxima semana<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                    </a>
-                    <br>
+                <CENTER>Selecione uma semana
+                <input type="week" id="week" onchange="updateWeek(this)" value="<?php echo date('Y-m-d'); ?>">
+                <br>
                 </center>
                 <table class="table">
                     <tr>
                         <?php
+                        $week = $semana;
+                        $year = $ano;
                         $week = ltrim($week, "0");
                         if ($week < 10) {
                             $week = '0' . $week;
