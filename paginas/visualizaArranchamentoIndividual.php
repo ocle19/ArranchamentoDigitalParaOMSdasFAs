@@ -9,7 +9,12 @@ if ($_SESSION['nivel'] == 1) {
             <tbody>
                 <?php
                 $ano = ($ano) ? $ano : date("Y");
-                $semana = ($semana) ? $semana : date('W', strtotime(date('Ymd') . ' + ' . DIAS_ANTECEDENCIA . ' days'));
+                $diaDoAno = date('z');
+                if ($diaDoAno < 7) {
+                    $semana = ($semana) ? $semana : 1;
+                } else {
+                    $semana = ($semana) ? $semana : date('W', strtotime(date('Ymd') . ' + ' . DIAS_ANTECEDENCIA . ' days'));
+                }
 
                 if ($semana > 52) {
                     $ano++;

@@ -7,7 +7,12 @@ if ($_SESSION['nivel'] == 3) {
                 <center>
                     <?php
                     $year = ($ano) ? $ano : date("Y");
-                    $week = ($semana) ? $semana : date('W', strtotime(date('Ymd') . ' + 0 days'));
+                    $diaDoAno = date('z');
+                    if ($diaDoAno < 7) {
+                        $week = ($semana) ? $semana : 1;
+                    } else {
+                        $week = ($semana) ? $semana : date('W', strtotime(date('Ymd') . ' + 0 days'));
+                    }
 
                     if ($week > 52) {
                         $year++;
