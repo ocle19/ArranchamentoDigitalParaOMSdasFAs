@@ -7,8 +7,8 @@ if (isset($_GET['idmilitar']) and $nivel > 0) {
     <div class="container">
         <div class="table">
             <tbody>  
-                <CENTER>Selecione uma semana
-                <input type="week" id="week" onchange="updateWeek(this, window.location.href)" value="<?php echo date('Y-m-d'); ?>">
+                <CENTER>Selecione um dia da semana
+                <input type="date" id="week" onchange="updateWeek(this, window.location.href)" value="<?php echo date('Y-m-d'); ?>">
                 <br>
                 <?php
                 if ($nome_militar) {

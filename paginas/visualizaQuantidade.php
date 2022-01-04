@@ -4,8 +4,8 @@ if ($_SESSION['nivel'] == 3) {
     <div class="container-fluid">
         <div class="table table-responsive">
             <tbody>
-                <CENTER>Selecione uma semana
-                <input type="week" id="week" onchange="updateWeek(this)" value="<?php echo date('Y-m-d'); ?>">
+                <CENTER>Selecione um dia da semana
+                <input type="date" id="week" onchange="updateWeek(this)" value="<?php echo date('Y-m-d'); ?>">
                 <br>
                 </center>
                 <table class="table">

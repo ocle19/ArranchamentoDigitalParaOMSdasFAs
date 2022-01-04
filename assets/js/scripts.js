@@ -1,11 +1,15 @@
-let updateWeek = (value, href) => {
-    let ano = value.value.split('-')[0];
-    let semana = value.value.split('-W')[1];
+let updateWeek = (input, href) => {
+    let valor = new Date(input.value);
+    let ano = valor.getFullYear();
+    let primeiroJaneiro = new Date(ano, 0, 1);
+    let semana = Math.ceil((((valor.getTime() - primeiroJaneiro.getTime()) / 86400000) + primeiroJaneiro.getDay() + 1) / 7)-1;
+
     if (href !== undefined) {
-    window.location.href = href+'&ano=' + ano + '&semana=' + semana;
+        window.location.href = href+'&ano=' + ano + '&semana=' + semana;
     } else {
         window.location.href = 'index.php?ano=' + ano + '&semana=' + semana;
     }
+    
 }
 
 function SomenteNumero(e) {

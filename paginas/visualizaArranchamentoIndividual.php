@@ -8,8 +8,8 @@ if ($_SESSION['nivel'] == 1) {
       
         <div class="table">
             <tbody>
-                <CENTER>Selecione uma semana
-                <input type="week" id="week" onchange="updateWeek(this)" value="<?php echo date('Y-m-d'); ?>">
+                <CENTER>Selecione um dia da semana
+                <input type="date" id="week" onchange="updateWeek(this)" value="<?php echo date('Y-m-d'); ?>">
                 <br>
                 <?php
                 if (isset($_SESSION['idUsuario'])) {
